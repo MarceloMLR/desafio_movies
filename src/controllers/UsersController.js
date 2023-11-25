@@ -5,7 +5,6 @@ const AppError = require("../utils/AppError")
 class UsersController {
     async create(request, response) {
 
-      /* console.log(request) */
       const { name, email, password } = request.body
 
       const database = await sqliteConnection()
@@ -78,6 +77,14 @@ class UsersController {
 
 
         return response.json()
+    }
+
+    async delete(request, response) {
+        const {id} = request.params;
+
+        await knex("movie_notes").where({id}).delete();
+
+        return response.json();
     }
 }
 

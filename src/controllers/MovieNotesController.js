@@ -3,7 +3,7 @@ const AppError = require("../utils/AppError")
 const knex = require("../database/knex")
 
 class MovieNotesController {
-   async create(request, response) {
+    async create(request, response) {
         const {title, description, rating} = request.body;
         const {user_id} = request.params;
 
@@ -14,7 +14,7 @@ class MovieNotesController {
             user_id
         });
 
-        return response.json(note_id)
+        return response.json()
     }
 
     async update (request, response) {
@@ -54,6 +54,16 @@ class MovieNotesController {
 
         return response.json()
     }
+
+    async delete(request, response) {
+        const {id} = request.params;
+
+        await knex("movie_notes").where({id}).delete();
+
+        return response.json();
+    }
+
+
 }
 
 module.exports = MovieNotesController
