@@ -9,5 +9,6 @@ const movieNotesController = new MovieNotesController();
 movieNotesRoutes.post('/:user_id',  movieNotesController.create)
 movieNotesRoutes.put('/:user_id/:note_id',  movieNotesController.update)
 movieNotesRoutes.delete("/:id", movieNotesController.delete)
+movieNotesRoutes.get("/", movieNotesController.index)
 
 module.exports = movieNotesRoutes
